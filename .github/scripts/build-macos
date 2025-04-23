@@ -102,6 +102,8 @@ build() {
   if (( debug )) cmake_args+=(--debug-output)
 
   cmake_args+=(--preset 'macos-ci')
+  sysroot="$(xcode-select -p)/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk"
+  cmake_args+=(-DCMAKE_OSX_SYSROOT=${sysroot})
 
   typeset -gx NSUnbufferedIO=YES
 
